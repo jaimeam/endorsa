@@ -5,6 +5,7 @@ from flask_migrate import Migrate
 
 database_name = "endorsa"
 database_path = "postgres://{}/{}".format('localhost:5432', database_name)
+database_path = "postgres://zhcibynuhcdgkw:6834d192bc6ba094e5208f2efb3d23a94f467656e027f8b82442dbe75c89d93d@ec2-18-215-99-63.compute-1.amazonaws.com:5432/decdc33d06mh9s"
 
 db = SQLAlchemy()
 
