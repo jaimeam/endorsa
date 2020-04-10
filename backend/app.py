@@ -19,9 +19,13 @@ def create_app(test_config=None):
       response.headers.add('Access-Control-Allow-Methods', 'GET,PATCH,PUT,POST,DELETE,OPTIONS')
       return response
 
+  @app.route('/', methods = ['GET'])
+  def hello_heroku():
+      return "Hello from Heroku!"
+
   return app
 
 APP = create_app()
 
 if __name__ == '__main__':
-    APP.run(host='0.0.0.0', port=8080, debug=True)
+    APP.run(debug=True)
