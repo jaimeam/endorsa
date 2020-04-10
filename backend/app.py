@@ -21,7 +21,7 @@ def create_app(test_config=None):
 
   @app.route('/', methods = ['GET'])
   def hello_heroku():
-      return "Hello from Heroku!"
+      return "Hello from Heroku 2!"
 
   return app
 
