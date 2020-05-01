@@ -1,6 +1,6 @@
 import os
 from sqlalchemy import Table, Column, String, Integer, ForeignKey, DateTime
-from sqlalchemy.orm import relationship, backref
+from sqlalchemy.orm import relationship
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from datetime import date
