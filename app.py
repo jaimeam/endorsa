@@ -3,6 +3,7 @@ import os
 from flask import Flask, request, abort, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
+from sqlalchemy.orm import aliased
 from models import setup_db, Profile, Skill, Endorsement
 
 def create_app(test_config=None):
@@ -57,13 +58,16 @@ def create_app(test_config=None):
                 description = description,
                 contact = contact
             )
+
+            # Create new entry in database
             new_user.insert()
+
             return jsonify({
                 'success':True,
                 'user': new_user.format()
             })
         except:
-            abort(404)
+            abort(422)
     
     # Get detailed info of a selected user, including info on endorsements
     @app.route('/users/<id>', methods=['GET'])
@@ -104,7 +108,7 @@ def create_app(test_config=None):
     
     # Delete a selected user
     @app.route('/users/<id>', methods=['DELETE'])
-    def user_info(id):
+    def delete_user(id):
         try:
             user = Profile.query.filter(Profile.id == id).one_or_none()
             # Raise error if no user is found with this ID
@@ -116,6 +120,172 @@ def create_app(test_config=None):
             return jsonify({
                 'success':True,
                 'user': user.format()
+            })
+        except:
+            abort(422)
+    
+    # Get full list of skills
+    @app.route('/skills', methods=['GET'])
+    def get_skills():
+        skills = [skill.format() for skill in Skill.query.all()]
+
+        if (len(skills) == 0):
+            abort(404)
+
+        return jsonify({
+        'success':True,
+        'skills':skills,
+        'num_skills':len(skills)
+        })
+
+    # Create a new skill via POST
+    @app.route('/skill', methods=['POST'])
+    def post_new_skill():
+        try:
+            # Get request data
+            req_data = request.get_json()
+            name = req_data.get('name')
+            description = req_data.get('description', None)
+            
+            # Create new Skill instance
+            new_skill = Skill(
+                name = name,
+                description = description
+            )
+
+            # Create new entry in database
+            new_skill.insert()
+            
+            return jsonify({
+                'success':True,
+                'skill': new_skill.format()
+            })
+        except:
+            abort(422)
+
+    # Get detailed info of a selected Skill, including info on endorsements
+    @app.route('/skills/<id>', methods=['GET'])
+    def skill_profile(id):
+        try:
+            skill = Skill.query.filter(Skill.id == id).one_or_none()
+            # Raise error if no user is found with this ID
+            if skill == None:
+                abort(404)
+
+            # Create aliases to deal with ambiguous Profile for receivers and givers
+            ProfileG = aliased(Profile)
+            ProfileR = aliased(Profile)
+
+            # Get detailed list if endorsements given for this skill, with users involved
+            endorsements = Endorsement.query\
+                .filter(Endorsement.skill_id == id)\
+                .with_entities(Endorsement.giver_id, Endorsement.receiver_id, Endorsement.creation_date)\
+                .join(ProfileG, Endorsement.giver_id==ProfileG.id)\
+                .add_columns(ProfileG.first_name.label('giver_first_name'),ProfileG.last_name.label('giver_last_name'))\
+                .join(ProfileR, Endorsement.receiver_id==ProfileR.id)\
+                .add_columns(ProfileR.first_name.label('receiver_first_name'),ProfileR.last_name.label('receiver_last_name'))
+
+            # Return all info
+            return jsonify({
+                'success':True,
+                'skill': skill.format(),
+                'endorsements': [e._asdict() for e in endorsements]
+            })
+        except:
+            abort(404)
+
+    # Delete a selected skill
+    @app.route('/skills/<id>', methods=['DELETE'])
+    def delete_skill(id):
+        try:
+            skill = Skill.query.filter(Skill.id == id).one_or_none()
+            
+            # Raise error if no skill is found with this ID
+            if skill == None:
+                abort(404)
+            
+            skill.delete()
+
+            return jsonify({
+                'success':True,
+                'skill': skill.format()
+            })
+        except:
+            abort(422)
+
+    # Get full list of endorsements
+    @app.route('/endorsements', methods=['GET'])
+    def get_endorsements():
+        try:
+            endorsements = [endorsement.format() for endorsement in Endorsement.query.all()]
+
+            if (len(endorsements) == 0):
+                abort(404)
+
+            # Create aliases to deal with ambiguous Profile for receivers and givers
+            ProfileG = aliased(Profile)
+            ProfileR = aliased(Profile)
+
+            # Query full info of endorsements with users info
+            endorsements = Endorsement.query\
+                .with_entities(Endorsement.giver_id, Endorsement.receiver_id, Endorsement.creation_date)\
+                .join(ProfileG, Endorsement.giver_id==ProfileG.id)\
+                .add_columns(ProfileG.first_name.label('giver_first_name'),ProfileG.last_name.label('giver_last_name'))\
+                .join(ProfileR, Endorsement.receiver_id==ProfileR.id)\
+                .add_columns(ProfileR.first_name.label('receiver_first_name'),ProfileR.last_name.label('receiver_last_name'))\
+                .join(Skill)\
+                .add_columns(Skill.name)
+
+            return jsonify({
+            'success':True,
+            'endorsements':[e._asdict() for e in endorsements],
+            'num_endorsements':len([e._asdict() for e in endorsements])
+            })
+        except:
+            abort(404)
+
+    # Create a new endorsement via POST
+    @app.route('/endorsements', methods=['POST'])
+    def post_new_endorsement():
+        try:
+            # Get request data
+            req_data = request.get_json()
+            giver_id = req_data.get('giver_id')
+            receiver_id = req_data.get('receiver_id')
+            skill_id = req_data.get('skill_id')
+            
+            # Create new Endorsement instance
+            new_endorsement = Endorsement(
+                giver_id = giver_id,
+                receiver_id = receiver_id,
+                skill_id = skill_id
+            )
+
+            # Create new entry in database
+            new_endorsement.insert()
+
+            return jsonify({
+                'success':True,
+                'user': new_endorsement.format()
+            })
+        except:
+            abort(404)
+
+    # Delete a selected endorsement
+    @app.route('/endorsements/<id>', methods=['DELETE'])
+    def delete_skill(id):
+        try:
+            endorsement = Endorsement.query.filter(Endorsement.id == id).one_or_none()
+            
+            # Raise error if no endorsement is found with this ID
+            if endorsement == None:
+                abort(404)
+            
+            endorsement.delete()
+
+            return jsonify({
+                'success':True,
+                'endorsement': endorsement.format()
             })
         except:
             abort(422)
