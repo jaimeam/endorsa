@@ -106,6 +106,45 @@ def create_app(test_config=None):
         except:
             abort(404)
     
+    # Modify a selected user via PATCH
+    @app.route('/users/<id>', methods=['PATCH'])
+    def patch_user(id):
+        try:
+            user = Profile.query.filter(Profile.id == id).one_or_none()
+            # Raise error if no user is found with this ID
+            if user == None:
+                abort(404)
+
+            # Get request data
+            req_data = request.get_json()
+            new_first_name = req_data.get('first_name', None)
+            new_last_name = req_data.get('last_name', None)
+            new_location = req_data.get('location', None)
+            new_description = req_data.get('description', None)
+            new_contact = req_data.get('contact', None)
+
+            # Modify new values
+            if new_first_name:
+                user.first_name = new_first_name
+            if new_last_name:
+                user.last_name = new_last_name
+            if new_location:
+                user.location = new_location
+            if new_description:
+                user.description = new_description
+            if new_contact:
+                user.contact = new_contact
+
+            user.update()
+
+            return jsonify({
+                'success':True,
+                'user': user.format()
+            })
+        except:
+            abort(422)
+
+    
     # Delete a selected user
     @app.route('/users/<id>', methods=['DELETE'])
     def delete_user(id):
@@ -194,6 +233,34 @@ def create_app(test_config=None):
         except:
             abort(404)
 
+    # Modify a selected skill via PATCH
+    @app.route('/skills/<id>', methods=['PATCH'])
+    def patch_skill(id):
+        try:
+            skill = Skill.query.filter(Skill.id == id).one_or_none()
+            # Raise error if no skill is found with this ID
+            if skill == None:
+                abort(404)
+
+            # Get request data
+            req_data = request.get_json()
+            new_name = req_data.get('name', None)
+            new_description = req_data.get('description', None)
+
+            # Modify new values
+            if new_name:
+                skill.name = new_name
+            if new_description:
+                skill.description = new_description
+
+            skill.update()
+            return jsonify({
+                'success':True,
+                'skill': skill.format()
+            })
+        except:
+            abort(422)
+
     # Delete a selected skill
     @app.route('/skills/<id>', methods=['DELETE'])
     def delete_skill(id):
@@ -273,7 +340,7 @@ def create_app(test_config=None):
 
     # Delete a selected endorsement
     @app.route('/endorsements/<id>', methods=['DELETE'])
-    def delete_skill(id):
+    def delete_endorsement(id):
         try:
             endorsement = Endorsement.query.filter(Endorsement.id == id).one_or_none()
             
