@@ -38,6 +38,21 @@ def create_app(test_config=None):
         'num_users':len(users)
         })
     
+    # Delete all users
+    @app.route('/users', methods=['DELETE'])
+    def delete_all_users():
+        # Delete all rows from model Profile
+        num_deleted_rows = db.session.query(Profile).delete()
+        db.session.commit()
+
+        if (len(Profile.query.all()) != 0):
+            abort(422)
+
+        return jsonify({
+        'success':True,
+        'num_users_deleted':num_deleted_rows
+        })
+    
     # Create a new user via POST
     @app.route('/users', methods=['POST'])
     def post_new_user():
@@ -67,6 +82,7 @@ def create_app(test_config=None):
                 'user': new_user.format()
             })
         except:
+            db.session.rollback()
             abort(422)
     
     # Get detailed info of a selected user, including info on endorsements
@@ -142,6 +158,7 @@ def create_app(test_config=None):
                 'user': user.format()
             })
         except:
+            db.session.rollback()
             abort(422)
 
     
@@ -161,6 +178,7 @@ def create_app(test_config=None):
                 'user': user.format()
             })
         except:
+            db.session.rollback()
             abort(422)
     
     # Get full list of skills
@@ -177,8 +195,24 @@ def create_app(test_config=None):
         'num_skills':len(skills)
         })
 
+    # Delete all skills
+    @app.route('/skills', methods=['DELETE'])
+    def delete_all_skills():
+        # Delete all rows from model Skill
+        num_deleted_rows = db.session.query(Skill).delete()
+        db.session.commit()
+
+        if (len(Skill.query.all()) != 0):
+            db.session.rollback()
+            abort(422)
+
+        return jsonify({
+        'success':True,
+        'num_users_deleted':num_deleted_rows
+        })
+
     # Create a new skill via POST
-    @app.route('/skill', methods=['POST'])
+    @app.route('/skills', methods=['POST'])
     def post_new_skill():
         try:
             # Get request data
@@ -200,6 +234,7 @@ def create_app(test_config=None):
                 'skill': new_skill.format()
             })
         except:
+            db.session.rollback()
             abort(422)
 
     # Get detailed info of a selected Skill, including info on endorsements
@@ -259,6 +294,7 @@ def create_app(test_config=None):
                 'skill': skill.format()
             })
         except:
+            db.session.rollback()
             abort(422)
 
     # Delete a selected skill
@@ -278,6 +314,7 @@ def create_app(test_config=None):
                 'skill': skill.format()
             })
         except:
+            db.session.rollback()
             abort(422)
 
     # Get full list of endorsements
@@ -310,6 +347,22 @@ def create_app(test_config=None):
             })
         except:
             abort(404)
+
+    # Delete all endorsements
+    @app.route('/endorsements', methods=['DELETE'])
+    def delete_all_endorsements():
+        # Delete all rows from model Endorsement
+        num_deleted_rows = db.session.query(Endorsement).delete()
+        db.session.commit()
+
+        if (len(Endorsement.query.all()) != 0):
+            db.session.rollback()
+            abort(422)
+
+        return jsonify({
+        'success':True,
+        'num_users_deleted':num_deleted_rows
+        })
 
     # Create a new endorsement via POST
     @app.route('/endorsements', methods=['POST'])
@@ -355,6 +408,7 @@ def create_app(test_config=None):
                 'endorsement': endorsement.format()
             })
         except:
+            db.session.rollback()
             abort(422)
 
     # Error handlers

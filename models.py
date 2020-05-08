@@ -41,32 +41,17 @@ class Profile(db.Model):
 
   # Insert new model in database
   def insert(self):
-    try:
-      db.session.add(self)
-      db.session.commit()
-    except:
-      db.session.rollback()
-    finally:
-      db.session.close()
+    db.session.add(self)
+    db.session.commit()
   
   # Update model in database
   def update(self):
-    try:
-      db.session.commit()
-    except:
-      db.session.rollback()
-    finally:
-      db.session.close()
+    db.session.commit()
 
   # Delete model from database
   def delete(self):
-    try:
       db.session.delete(self)
       db.session.commit()
-    except:
-      db.session.rollback()
-    finally:
-      db.session.close()
 
   # Form representation of Profile model
   def format(self):
@@ -93,32 +78,17 @@ class Skill(db.Model):
 
   # Insert new model in database
   def insert(self):
-    try:
-      db.session.add(self)
-      db.session.commit()
-    except:
-      db.session.rollback()
-    finally:
-      db.session.close()
+    db.session.add(self)
+    db.session.commit()
   
   # Update model in database
   def update(self):
-    try:
-      db.session.commit()
-    except:
-      db.session.rollback()
-    finally:
-      db.session.close()
+    db.session.commit()
 
   # Delete model from database
   def delete(self):
-    try:
-      db.session.delete(self)
-      db.session.commit()
-    except:
-      db.session.rollback()
-    finally:
-      db.session.close()
+    db.session.delete(self)
+    db.session.commit()
 
   # Form representation of Skill model
   def format(self):
@@ -154,32 +124,17 @@ class Endorsement(db.Model):
 
   # Insert new model in database
   def insert(self):
-    try:
-      db.session.add(self)
-      db.session.commit()
-    except:
-      db.session.rollback()
-    finally:
-      db.session.close()
+    db.session.add(self)
+    db.session.commit()
   
   # Update model in database
   def update(self):
-    try:
-      db.session.commit()
-    except:
-      db.session.rollback()
-    finally:
-      db.session.close()
+    db.session.commit()
 
   # Delete model from database
   def delete(self):
-    try:
-      db.session.delete(self)
-      db.session.commit()
-    except:
-      db.session.rollback()
-    finally:
-      db.session.close()
+    db.session.delete(self)
+    db.session.commit()
 
   # Form representation of Endorsement model
   def format(self):
