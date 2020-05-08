@@ -208,7 +208,7 @@ def create_app(test_config=None):
 
         return jsonify({
         'success':True,
-        'num_users_deleted':num_deleted_rows
+        'num_skills_deleted':num_deleted_rows
         })
 
     # Create a new skill via POST
@@ -361,7 +361,7 @@ def create_app(test_config=None):
 
         return jsonify({
         'success':True,
-        'num_users_deleted':num_deleted_rows
+        'num_endorsements_deleted':num_deleted_rows
         })
 
     # Create a new endorsement via POST
@@ -386,10 +386,11 @@ def create_app(test_config=None):
 
             return jsonify({
                 'success':True,
-                'user': new_endorsement.format()
+                'endorsement': new_endorsement.format()
             })
         except:
-            abort(404)
+            db.session.rollback()
+            abort(422)
 
     # Delete a selected endorsement
     @app.route('/endorsements/<id>', methods=['DELETE'])

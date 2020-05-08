@@ -139,6 +139,7 @@ class Endorsement(db.Model):
   # Form representation of Endorsement model
   def format(self):
     return {
+      'id': self.id,
       'giver_id': self.giver_id,
       'receiver_id': self.receiver_id,
       'skill_id': self.skill_id,
