@@ -5,6 +5,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from sqlalchemy.orm import aliased
 from models import setup_db, Profile, Skill, Endorsement
+from auth import AuthError, requires_auth
+from jose import jwt
 
 def create_app(test_config=None):
     # create and configure the app
@@ -26,7 +28,8 @@ def create_app(test_config=None):
 
     # Get full list of users
     @app.route('/users', methods=['GET'])
-    def get_users():
+    @requires_auth('read:user')
+    def get_users(jwt):
         users = [user.format() for user in Profile.query.all()]
 
         if (len(users) == 0):
@@ -40,7 +43,8 @@ def create_app(test_config=None):
     
     # Delete all users
     @app.route('/users', methods=['DELETE'])
-    def delete_all_users():
+    @requires_auth('edit:user')
+    def delete_all_users(jwt):
         # Delete all rows from model Profile
         num_deleted_rows = db.session.query(Profile).delete()
         db.session.commit()
@@ -55,7 +59,8 @@ def create_app(test_config=None):
     
     # Create a new user via POST
     @app.route('/users', methods=['POST'])
-    def post_new_user():
+    @requires_auth('edit:user')
+    def post_new_user(jwt):
         try:
             # Get request data
             req_data = request.get_json()
@@ -87,7 +92,8 @@ def create_app(test_config=None):
     
     # Get detailed info of a selected user, including info on endorsements
     @app.route('/users/<id>', methods=['GET'])
-    def user_profile(id):
+    @requires_auth('read:user')
+    def user_profile(jwt,id):
         try:
             user = Profile.query.filter(Profile.id == id).one_or_none()
             # Raise error if no user is found with this ID
@@ -124,7 +130,8 @@ def create_app(test_config=None):
     
     # Modify a selected user via PATCH
     @app.route('/users/<id>', methods=['PATCH'])
-    def patch_user(id):
+    @requires_auth('edit:user')
+    def patch_user(jwt,id):
         try:
             user = Profile.query.filter(Profile.id == id).one_or_none()
             # Raise error if no user is found with this ID
@@ -164,7 +171,8 @@ def create_app(test_config=None):
     
     # Delete a selected user
     @app.route('/users/<id>', methods=['DELETE'])
-    def delete_user(id):
+    @requires_auth('edit:user')
+    def delete_user(jwt,id):
         try:
             user = Profile.query.filter(Profile.id == id).one_or_none()
             # Raise error if no user is found with this ID
@@ -183,7 +191,8 @@ def create_app(test_config=None):
     
     # Get full list of skills
     @app.route('/skills', methods=['GET'])
-    def get_skills():
+    @requires_auth('read:skill')
+    def get_skills(jwt):
         skills = [skill.format() for skill in Skill.query.all()]
 
         if (len(skills) == 0):
@@ -197,7 +206,8 @@ def create_app(test_config=None):
 
     # Delete all skills
     @app.route('/skills', methods=['DELETE'])
-    def delete_all_skills():
+    @requires_auth('edit:skill')
+    def delete_all_skills(jwt):
         # Delete all rows from model Skill
         num_deleted_rows = db.session.query(Skill).delete()
         db.session.commit()
@@ -213,7 +223,8 @@ def create_app(test_config=None):
 
     # Create a new skill via POST
     @app.route('/skills', methods=['POST'])
-    def post_new_skill():
+    @requires_auth('edit:skill')
+    def post_new_skill(jwt):
         try:
             # Get request data
             req_data = request.get_json()
@@ -239,7 +250,8 @@ def create_app(test_config=None):
 
     # Get detailed info of a selected Skill, including info on endorsements
     @app.route('/skills/<id>', methods=['GET'])
-    def skill_profile(id):
+    @requires_auth('read:skill')
+    def skill_profile(jwt,id):
         try:
             skill = Skill.query.filter(Skill.id == id).one_or_none()
             # Raise error if no user is found with this ID
@@ -270,7 +282,8 @@ def create_app(test_config=None):
 
     # Modify a selected skill via PATCH
     @app.route('/skills/<id>', methods=['PATCH'])
-    def patch_skill(id):
+    @requires_auth('edit:skill')
+    def patch_skill(jwt,id):
         try:
             skill = Skill.query.filter(Skill.id == id).one_or_none()
             # Raise error if no skill is found with this ID
@@ -299,7 +312,8 @@ def create_app(test_config=None):
 
     # Delete a selected skill
     @app.route('/skills/<id>', methods=['DELETE'])
-    def delete_skill(id):
+    @requires_auth('edit:skill')
+    def delete_skill(jwt,id):
         try:
             skill = Skill.query.filter(Skill.id == id).one_or_none()
             
@@ -319,7 +333,8 @@ def create_app(test_config=None):
 
     # Get full list of endorsements
     @app.route('/endorsements', methods=['GET'])
-    def get_endorsements():
+    @requires_auth('read:endorsement')
+    def get_endorsements(jwt):
         try:
             endorsements = [endorsement.format() for endorsement in Endorsement.query.all()]
 
@@ -350,7 +365,8 @@ def create_app(test_config=None):
 
     # Delete all endorsements
     @app.route('/endorsements', methods=['DELETE'])
-    def delete_all_endorsements():
+    @requires_auth('edit:endorsement')
+    def delete_all_endorsements(jwt):
         # Delete all rows from model Endorsement
         num_deleted_rows = db.session.query(Endorsement).delete()
         db.session.commit()
@@ -366,7 +382,8 @@ def create_app(test_config=None):
 
     # Create a new endorsement via POST
     @app.route('/endorsements', methods=['POST'])
-    def post_new_endorsement():
+    @requires_auth('edit:endorsement')
+    def post_new_endorsement(jwt):
         try:
             # Get request data
             req_data = request.get_json()
@@ -394,7 +411,8 @@ def create_app(test_config=None):
 
     # Delete a selected endorsement
     @app.route('/endorsements/<id>', methods=['DELETE'])
-    def delete_endorsement(id):
+    @requires_auth('edit:endorsement')
+    def delete_endorsement(jwt):
         try:
             endorsement = Endorsement.query.filter(Endorsement.id == id).one_or_none()
             
@@ -428,6 +446,14 @@ def create_app(test_config=None):
             'error': 422,
             'message': 'Unprocessable'
         }), 422
+
+    @app.errorhandler(AuthError)
+    def authorizationerror(error):
+        return jsonify({
+                        "success": False, 
+                        "error": 401,
+                        "message": "Authorization error"
+        }), 401
 
     return app
 
