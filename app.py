@@ -412,7 +412,7 @@ def create_app(test_config=None):
     # Delete a selected endorsement
     @app.route('/endorsements/<id>', methods=['DELETE'])
     @requires_auth('edit:endorsement')
-    def delete_endorsement(jwt):
+    def delete_endorsement(jwt, id):
         try:
             endorsement = Endorsement.query.filter(Endorsement.id == id).one_or_none()
             

@@ -849,7 +849,7 @@
 				"bearer": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik1qTTFSVFE1UlRNelJEQkRNVE0wUlVRNE9FTTVPVFE0UmtVelEwTkJNVGxEUVVFeFFrUXlSUSJ9.eyJpc3MiOiJodHRwczovL2phaW1lYW0uZXUuYXV0aDAuY29tLyIsInN1YiI6InlrMWdGZ25JNnVxTXhZQTlqMFV4WEVrNXA1QjZiYkx2QGNsaWVudHMiLCJhdWQiOiJlbmRvcnNhIiwiaWF0IjoxNTg5NTI0NTI0LCJleHAiOjE1ODk2MTA5MjQsImF6cCI6InlrMWdGZ25JNnVxTXhZQTlqMFV4WEVrNXA1QjZiYkx2Iiwic2NvcGUiOiJlZGl0OnVzZXIgZWRpdDpza2lsbCByZWFkOnNraWxsIHJlYWQ6dXNlciByZWFkOmVuZG9yc2VtZW50IGVkaXQ6ZW5kb3JzZW1lbnQiLCJndHkiOiJjbGllbnQtY3JlZGVudGlhbHMiLCJwZXJtaXNzaW9ucyI6WyJlZGl0OnVzZXIiLCJlZGl0OnNraWxsIiwicmVhZDpza2lsbCIsInJlYWQ6dXNlciIsInJlYWQ6ZW5kb3JzZW1lbnQiLCJlZGl0OmVuZG9yc2VtZW50Il19.rMZR8ABweniLWOlVEkwncLRDuNH-po60ylfXQROUcf741AooMUjC720TxAfYBgm3lqrX46VOcxCCD0rTyuM5bKELm08AQ-w6aHtqSodX-YTtM8ES8-XNRAZJHRl0d__JlKR6v0UD-4ZaisPEjDF8SFOWqH9nDd2FVimgDPyorgmPsaq7O5wAskkN1xyENChPHHmT4TbbJ2y3PjsjoSsMhmrMF0f1kwfa4_ABQOpAjYFDOxW7wZBW5VvRy9smfCN3f-hw2kvg-GONl72r6DKSZQC9ZgkP2v4elvwJ2Tdo4A_FL1Ki5eKJdf_L0xdvcMuSf-cpr_iut8WbYu158oltWg",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik1qTTFSVFE1UlRNelJEQkRNVE0wUlVRNE9FTTVPVFE0UmtVelEwTkJNVGxEUVVFeFFrUXlSUSJ9.eyJpc3MiOiJodHRwczovL2phaW1lYW0uZXUuYXV0aDAuY29tLyIsInN1YiI6InlrMWdGZ25JNnVxTXhZQTlqMFV4WEVrNXA1QjZiYkx2QGNsaWVudHMiLCJhdWQiOiJlbmRvcnNhIiwiaWF0IjoxNTg5NTM4ODk0LCJleHAiOjE1OTIxMzA4OTQsImF6cCI6InlrMWdGZ25JNnVxTXhZQTlqMFV4WEVrNXA1QjZiYkx2Iiwic2NvcGUiOiJlZGl0OnVzZXIgZWRpdDpza2lsbCByZWFkOnNraWxsIHJlYWQ6dXNlciByZWFkOmVuZG9yc2VtZW50IGVkaXQ6ZW5kb3JzZW1lbnQiLCJndHkiOiJjbGllbnQtY3JlZGVudGlhbHMiLCJwZXJtaXNzaW9ucyI6WyJlZGl0OnVzZXIiLCJlZGl0OnNraWxsIiwicmVhZDpza2lsbCIsInJlYWQ6dXNlciIsInJlYWQ6ZW5kb3JzZW1lbnQiLCJlZGl0OmVuZG9yc2VtZW50Il19.kU8Eo2sQMznmOXL3YEbOxceiA-eO9Kev-U9s3s991hX5eCV2oVLCxA44uDTs0-wHKQu4fsb2s5twMl6a1pOECwl-mONnzq-lsvPCEEOidTm3iGqaT1UjgIpc-hBZuH9iYm0nnGm2qB-FqWWaqoSnHWHm4mh_XevkuReSChD6eN35K5kf3FQDlt1b3Ebiu2uEiqk1gtpywRJzlXZE5qGD8SbzIRZnCy1nBcFUI81wz2ORZ6HWXIZ9_-4e7uEHdDcCfxDPzC7KJrW_iFyX0jlV87pe4cD8sRQwstgBmjMRXYGkyDc5EkuGq9BaOGP-BK9W7eRWijJPhAG9UFvYt34Qxw",
 						"type": "string"
 					}
 				]
@@ -1289,7 +1289,7 @@
 				"bearer": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik1qTTFSVFE1UlRNelJEQkRNVE0wUlVRNE9FTTVPVFE0UmtVelEwTkJNVGxEUVVFeFFrUXlSUSJ9.eyJpc3MiOiJodHRwczovL2phaW1lYW0uZXUuYXV0aDAuY29tLyIsInN1YiI6InlrMWdGZ25JNnVxTXhZQTlqMFV4WEVrNXA1QjZiYkx2QGNsaWVudHMiLCJhdWQiOiJlbmRvcnNhIiwiaWF0IjoxNTg5NTI0NjE0LCJleHAiOjE1ODk2MTEwMTQsImF6cCI6InlrMWdGZ25JNnVxTXhZQTlqMFV4WEVrNXA1QjZiYkx2Iiwic2NvcGUiOiJyZWFkOnNraWxsIHJlYWQ6dXNlciByZWFkOmVuZG9yc2VtZW50IiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIiwicGVybWlzc2lvbnMiOlsicmVhZDpza2lsbCIsInJlYWQ6dXNlciIsInJlYWQ6ZW5kb3JzZW1lbnQiXX0.a0OQBLj0QuXgd0yxqeuIvV_9PWBEtBdk3R2txz5e2WgYIcYzac0jtg8gfKwhPSJfN9rI3wiVA_XwbM8cUxgjKzwhPoItJLSlaFQ2C1YnnOAkBuEOx7sD79vZ9yE8WHmdbhTTUyROiGc_PfuUHh0arXAlxlCykXd13OPjGMm_p2C01PDwcFBMDCyHv2kSkDlUMRqpvCapnpz9eEKipd3yb0LxmJJ9I8YjGu0zIxDf0qUjj6GrSnkkHkeasZAedd5V13SvbEJx0fqi6lx_wqOpQkuEr7VsFo4-b82tZmUReMGvPodrXbDODEqhN64fgjB1ql4Zs7Kt-05V9FcbWraTQw",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik1qTTFSVFE1UlRNelJEQkRNVE0wUlVRNE9FTTVPVFE0UmtVelEwTkJNVGxEUVVFeFFrUXlSUSJ9.eyJpc3MiOiJodHRwczovL2phaW1lYW0uZXUuYXV0aDAuY29tLyIsInN1YiI6InlrMWdGZ25JNnVxTXhZQTlqMFV4WEVrNXA1QjZiYkx2QGNsaWVudHMiLCJhdWQiOiJlbmRvcnNhIiwiaWF0IjoxNTg5NTM5MDExLCJleHAiOjE1OTIxMzEwMTEsImF6cCI6InlrMWdGZ25JNnVxTXhZQTlqMFV4WEVrNXA1QjZiYkx2Iiwic2NvcGUiOiJyZWFkOnNraWxsIHJlYWQ6dXNlciByZWFkOmVuZG9yc2VtZW50IiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIiwicGVybWlzc2lvbnMiOlsicmVhZDpza2lsbCIsInJlYWQ6dXNlciIsInJlYWQ6ZW5kb3JzZW1lbnQiXX0.bbuiFBhNUhw8Vt5BR8QlKCcctvMq95Xoc9-qoOiAymR5OtdX4pIlpiulC3XObrxwQWuZTq8yEMmDdOQKm7MUiuw2UBCjADCWAZQGmyPJGvb69UokrJzgegEc6XvMlDMsJDABKjvqaptcJYFt3Y4CPSxVN6pc_mVZurmNWmx5WK5o_GA8RDKox474S7hWHRQG4lcUeRetYQhzWVMxqxSI7Aa5rUISifhlad-ua9HTng7aMPytUMwzf2g9bAeB01x_h7ZufCn3fjAnF4WSwCns6LRqzESOrPlfJNZ5vhTd19__G-eAOF1V0unTr77VF9O0BF0jN_88IbVjAYWaRmKNWA",
 						"type": "string"
 					}
 				]
@@ -1309,6 +1309,140 @@
 					"listen": "test",
 					"script": {
 						"id": "4aca74b5-a9a7-4781-8648-34e6d835c84a",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "delete_new",
+			"item": [
+				{
+					"name": "/endorsements/{{new_endorsement_id}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7d949f47-6d55-4714-8bdc-7de48bdd7ee6",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/endorsements/{{new_endorsement_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"endorsements",
+								"{{new_endorsement_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/{{new_user_id}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9cc55fdd-8a8d-433c-a0fa-a834f51e7a21",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/{{new_user_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"{{new_user_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/skills/{{new_skill_id}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e576011c-02cf-4f91-8dac-99af5c97021a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/skills/{{new_skill_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"skills",
+								"{{new_skill_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik1qTTFSVFE1UlRNelJEQkRNVE0wUlVRNE9FTTVPVFE0UmtVelEwTkJNVGxEUVVFeFFrUXlSUSJ9.eyJpc3MiOiJodHRwczovL2phaW1lYW0uZXUuYXV0aDAuY29tLyIsInN1YiI6InlrMWdGZ25JNnVxTXhZQTlqMFV4WEVrNXA1QjZiYkx2QGNsaWVudHMiLCJhdWQiOiJlbmRvcnNhIiwiaWF0IjoxNTg5NTM4ODk0LCJleHAiOjE1OTIxMzA4OTQsImF6cCI6InlrMWdGZ25JNnVxTXhZQTlqMFV4WEVrNXA1QjZiYkx2Iiwic2NvcGUiOiJlZGl0OnVzZXIgZWRpdDpza2lsbCByZWFkOnNraWxsIHJlYWQ6dXNlciByZWFkOmVuZG9yc2VtZW50IGVkaXQ6ZW5kb3JzZW1lbnQiLCJndHkiOiJjbGllbnQtY3JlZGVudGlhbHMiLCJwZXJtaXNzaW9ucyI6WyJlZGl0OnVzZXIiLCJlZGl0OnNraWxsIiwicmVhZDpza2lsbCIsInJlYWQ6dXNlciIsInJlYWQ6ZW5kb3JzZW1lbnQiLCJlZGl0OmVuZG9yc2VtZW50Il19.kU8Eo2sQMznmOXL3YEbOxceiA-eO9Kev-U9s3s991hX5eCV2oVLCxA44uDTs0-wHKQu4fsb2s5twMl6a1pOECwl-mONnzq-lsvPCEEOidTm3iGqaT1UjgIpc-hBZuH9iYm0nnGm2qB-FqWWaqoSnHWHm4mh_XevkuReSChD6eN35K5kf3FQDlt1b3Ebiu2uEiqk1gtpywRJzlXZE5qGD8SbzIRZnCy1nBcFUI81wz2ORZ6HWXIZ9_-4e7uEHdDcCfxDPzC7KJrW_iFyX0jlV87pe4cD8sRQwstgBmjMRXYGkyDc5EkuGq9BaOGP-BK9W7eRWijJPhAG9UFvYt34Qxw",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "9cfdd81d-4218-4e01-b3ac-615f66cd9fc8",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "d59778d7-b33e-43c8-b4ba-3f6831b94aaa",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -1343,19 +1477,19 @@
 	],
 	"variable": [
 		{
-			"id": "9955dac4-fb0a-4449-90da-bfc5bc799a1f",
+			"id": "8aa43b2c-7cd1-4125-b53c-6e71e28a65d4",
 			"key": "base_url",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "1732f1e2-68cc-4e87-8fce-1c16b6e8b08a",
+			"id": "1adc0d4c-f72d-42b8-90a2-b592ced69081",
 			"key": "base_url_local",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "f9cefd79-d759-494b-bdf6-b8932f1ef475",
+			"id": "049efcaf-1de6-4b21-97d0-77bfb994724b",
 			"key": "base_url_heroku",
 			"value": "",
 			"type": "string"
