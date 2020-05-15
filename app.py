@@ -24,7 +24,7 @@ def create_app(test_config=None):
 
     @app.route('/', methods = ['GET'])
     def welcome():
-        return "Welcome to Endorsa!"
+        return "Welcome to Endorsa! More info in https://github.com/jaimeam/endorsa"
 
     # Get full list of users
     @app.route('/users', methods=['GET'])
